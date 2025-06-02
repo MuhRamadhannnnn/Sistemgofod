@@ -1,0 +1,341 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+
+using namespace std;
+//1
+//menu login
+struct Akun{
+    //memnbuat tipe data pada void
+    string username;
+    string password;
+    string inputuser;
+    string inputpass;
+};
+
+class menulogin{
+    private:
+    //memasukan fungsi struct akun pada input login dan register
+    Akun akunterdaftar;
+    bool sudahterdaftar = false; // 
+    //membuat variabel boolean untuk status registrasi
+  
+
+    public:
+    //membuat fungsi registrasi
+    void registrasi(){
+        cout<<"Masukkan Username baru : ";
+        cin>>akunterdaftar.username;
+        cout<<"Masukkan Password baru : ";
+        cin>>akunterdaftar.password;
+        sudahterdaftar = true;
+        cout<<"Registrasi berhasil!\n";
+    }
+    //membuat fungsi login
+    void login() {
+        cout<<"\n== FORM LOGIN ==\n";
+        cout<<"Masukkan username : ";
+        cin>>akunterdaftar.inputuser;
+        cout<<"Masukkan password : ";
+        cin>>akunterdaftar.inputpass;
+
+        if(sudahterdaftar && akunterdaftar.inputuser == akunterdaftar.username && akunterdaftar.inputpass == akunterdaftar.password) {
+            cout<<"Login Berhasil!\n";
+        } else {
+            cout<<"Login Gagal! Username atau password salah.\n";
+            cout<<"Masukan Ulang!!!!\n";
+            login(); // Memanggil kembali fungsi login jika gagal
+        }
+    }
+    //menampilkan menu 
+    void menampilkanmenu() {
+        int pilihan;
+        //melakukan pilihan jika pilihan tidak sama dengan 1 atau 2 maka akan diulang
+        do{
+            cout<<"Selamat datang di akun gofood!\n";
+            cout<<"1. Login\n";
+            cout<<"2. Register\n";
+            cout<<"Pilih menu (1/2): ";
+            cin>>pilihan;
+        }while(pilihan !=1 && pilihan != 2);
+
+        //melakukan kondisi atau pilihan
+        if (pilihan == 1) {
+         //   if(!sudahterdaftar) {
+                cout<<"Belum ada akun terdaftar. Silakan pilih menu 2 untuk melakukan registrasi terlebih dahulu.\n";
+                registrasi();
+          //  }
+            login();
+            } else if(pilihan == 2) {
+                registrasi();
+                login();
+            }
+        }
+};
+//2
+//membuat menu dalam toko
+struct Menutoko{
+    int isimenu;
+    int hargamenu;
+};
+//membuat toko
+class Toko{
+    private:
+    Menutoko menu;
+    public:
+    //membuat pilihan toko
+    void pilihantoko(){
+        int pilihan;
+    //memasukan pilihan toko jika pilihan tidak sama dengan 1 atau 2 maka akan diulang
+    do{
+        cout<<"=== Pilih Toko ===\n";
+        cout<<"1. Bakso Pak Kumis\n";
+        cout<<"2. Warung Padang\n";
+        cout<<"3. Sushime\n";
+        cout<<"4. Cafe Paris\n";
+        cout<<"5. Warung Sunda\n";
+        cout<<"Masukan pilihan toko (1-5): ";
+        cin>>pilihan;
+        }while(pilihan < 1 || pilihan > 5);
+
+    //melakukan kondisi atau pilihan 1
+        if(pilihan == 1){
+        system("pause");
+        system("cls");
+        cout<<"Anda memilih Bakso Pak Kumis\n";
+        ifstream file("baksopakkumis.txt");
+        string baris;
+
+    //melakukan perkondision jika file tidak ditemukan
+        if(!file.is_open()){
+            cerr << "File tidak ditemukan!" << endl;
+    
+        }
+        while(getline (file, baris)){
+            cout<<baris<<endl;
+        }
+        file.close();
+
+    //membuat pilihan menu dalam toko
+   cout<<"Pilihan menu: ";
+   cin>>menu.isimenu;
+
+   switch(menu.isimenu){
+    case 1:
+        menu.hargamenu = 25000;
+        cout<<"Bakso Urat"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    case 2:
+        menu.hargamenu = 20000;
+        cout<<"Mie Ayam"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    case 3:
+        menu.hargamenu = 5000;
+        cout<<"Es Cendol"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    case 4:
+        menu.hargamenu = 8000;
+        cout<<"Tahu Tempe"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    default:
+        cout<<"Pilihan tidak ada pada daftar menu.\n";
+        break;
+    
+   }
+}
+    //melakukan kondisi atau pilihan 2
+        if(pilihan == 2){
+        system("pause");
+        system("cls");
+        cout<<"Anda memilih Warung Padang\n";
+        ifstream file("warungpadang.txt");
+        string baris;
+
+    //melakukan perkondision jika file tidak ditemukan
+        if(!file.is_open()){
+            cerr << "File tidak ditemukan!" << endl;
+    
+        }
+        while(getline (file, baris)){
+            cout<<baris<<endl;
+        }
+        file.close();
+
+    //membuat pilihan menu dalam toko 2
+   cout<<"Pilihan menu: ";
+   cin>>menu.isimenu;
+
+   switch(menu.isimenu){
+    case 1:
+        menu.hargamenu = 35000;
+        cout<<"Rendang"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    case 2:
+        menu.hargamenu = 30000;
+        cout<<"Sate Padang"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    case 3:
+        menu.hargamenu = 10000;
+        cout<<"Es Teh Tarek"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    case 4:
+        menu.hargamenu = 15000;
+        cout<<"Jus Alpukat"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    default:
+        cout<<"Pilihan tidak ada pada daftar menu.\n";
+        break;
+    
+   }
+}
+    //melakukan kondisi atau pilihan 3
+        if(pilihan == 3){
+        system("pause");
+        system("cls");
+        cout<<"Anda memilih Sushime\n";
+        ifstream file("sushiexpress.txt");
+        string baris;
+
+    //melakukan perkondision jika file tidak ditemukan
+        if(!file.is_open()){
+            cerr << "File tidak ditemukan!" << endl;
+    
+        }
+        while(getline (file, baris)){
+            cout<<baris<<endl;
+        }
+        file.close();
+
+    //membuat pilihan menu dalam toko 3
+   cout<<"Pilihan menu: ";
+   cin>>menu.isimenu;
+
+   switch(menu.isimenu){
+    case 1:
+        menu.hargamenu = 45000;
+        cout<<"Sushi Roll"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    case 2:
+        menu.hargamenu = 40000;
+        cout<<"Ramen"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    case 3:
+        menu.hargamenu = 20000;
+        cout<<"Matcha Latte"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    case 4:
+        menu.hargamenu = 18000;
+        cout<<"Sakura Tea"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    default:
+        cout<<"Pilihan tidak ada pada daftar menu.\n";
+        break;
+    
+   }
+}
+//melakukan kondisi atau pilihan 4
+        if(pilihan == 4){
+        system("pause");
+        system("cls");
+        cout<<"Anda memilih Cafe Paris\n";
+        ifstream file("cafeparis.txt");
+        string baris;
+
+    //perkondision jika file tidak ditemukan
+        if(!file.is_open()){
+            cerr << "File tidak ditemukan!" << endl;
+    
+        }
+        while(getline (file, baris)){
+            cout<<baris<<endl;
+        }
+        file.close();
+
+    //membuat pilihan menu dalam toko 4
+   cout<<"Pilihan menu: ";
+   cin>>menu.isimenu;
+
+   switch(menu.isimenu){
+    case 1:
+        menu.hargamenu = 35000;
+        cout<<"Croissant"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    case 2:
+        menu.hargamenu = 50000;
+        cout<<"Quiche Lorraine"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    case 3:
+        menu.hargamenu = 25000;
+        cout<<"Espresso"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    case 4:
+        menu.hargamenu = 30000;
+        cout<<"Cafe Latte"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    default:
+        cout<<"Pilihan tidak ada pada daftar menu.\n";
+        break;
+    
+   }
+}
+//melakukan kondisi atau pilihan 5
+        if(pilihan == 5){
+        system("pause");
+        system("cls");
+        cout<<"Anda memilih Warung Sunda\n";
+        ifstream file("warungsunda.txt");
+        string baris;
+
+    //jika melakukan perkondision jika file tidak ditemukan
+        if(!file.is_open()){
+            cerr << "File tidak ditemukan!" << endl;
+    
+        }
+        while(getline (file, baris)){
+            cout<<baris<<endl;
+        }
+        file.close();
+
+    //membuat pilihan menu dalam toko 5
+   cout<<"Pilihan menu: ";
+   cin>>menu.isimenu;
+
+   switch(menu.isimenu){
+    case 1:
+        menu.hargamenu = 30000;
+        cout<<"Nasi Timbel"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    case 2:
+        menu.hargamenu = 20000;
+        cout<<"Karedok"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    case 3:
+        menu.hargamenu = 10000;
+        cout<<"Es Cincau"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    case 4:
+        menu.hargamenu = 12000;
+        cout<<"Bajigur"<<" Rp "<<menu.hargamenu<<endl;
+        break;
+    default:
+        cout<<"Pilihan tidak ada pada daftar menu.\n";
+        break;
+    
+   }
+}
+}
+};
+int main() {
+    //output menu login
+    menulogin akun; //1
+    Toko toko; //2
+    akun.menampilkanmenu();
+    system("pause");
+    system("cls");
+
+    //output toko dan menu toko
+    toko.pilihantoko();
+    return 0;
+
+    //output daro
+}
